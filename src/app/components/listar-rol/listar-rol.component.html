@@ -1,0 +1,71 @@
+
+
+<div id="seccion_header" style="text-align: center;">
+
+  <h2>Gestión de Roles</h2>
+  <hr >
+
+</div>
+<nav class="navbar navbar-expand-sm" >
+  </nav>
+<br/>
+<ul class="nav nav-tabs" >
+  <li class="nav-item">
+    <a id="seleccion" class="nav-link active" routerLink="/listar-rol">Usuarios Asignados</a>
+  </li>
+  <li class="nav-item">
+    <a id="Noseleccion" class="nav-link" routerLink="/listar-noRol">Usuarios Sin Asignar</a>
+  </li>
+</ul>
+
+
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+          <div>
+              <div class="card-body text-center">
+                  <span style="color: black; font-weight: bold" class="titulo">LISTADO DE USUARIOS CON ROL ASIGNADO</span>
+                  <div class="col">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="filterPost" placeholder="Search..." [(ngModel)]="filterPost">
+                    </div>
+                  </div>
+                  <br>
+                  <table  class="table table-striped mt-3">
+                      <thead>
+                        <tr>
+                          <th  scope="col">Usuario</th>
+                          <th scope="col">Nombre Completo</th>
+                          <th  scope="col">Rol</th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let rol of listRol | filter:filterPost">
+                          <ng-container *ngIf="rol.NombreRol == 'Administrador' || rol.NombreRol == 'Verificador' || rol.NombreRol == 'Estandar'">
+                          <td>{{ rol.NombreUsuario}}</td>
+                          <td>{{ rol.ApP}} {{ rol.ApM}} {{rol.Nombre}} </td>
+                          <td>{{ rol.NombreRol}}</td>
+                          <td [routerLink]="['/editar-rol', rol._id]" >
+                            
+                            <i class="fas fa-edit text-primary"></i>
+                          </td>
+                          <td [routerLink]="['/eliminar-rol', rol._id]" >
+                            <i   class="fas fa-trash text-danger"></i>
+                             <!--  (click)="eliminarRol(rol._id)"  Elimina el usuario // ruta [routerLink]="['/eliminar-rol', rol._id]"--> 
+                          </td>
+                        </ng-container>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+ 

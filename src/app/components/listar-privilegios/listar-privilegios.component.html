@@ -1,0 +1,50 @@
+
+
+<div id="seccion_header" style="text-align: center;">
+
+    <h2>Gestión de Privilegios</h2>
+    <hr >
+  
+  </div>
+  
+  <div id="cont" class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div>
+                <div class="card-body text-center">
+                    <span style="color: black; font-weight: bold" class="titulo">LISTADO DE PRIVILEGIOS</span>
+                    <button class="btn btn-success float-end" routerLink="/crear-privilegios"  style="background-color: #8dc640;border: #8dc640;">NUEVO</button>
+                    <table  class="table table-striped mt-3">
+                        <thead>
+                          <tr>
+                            <th  scope="col">Menu</th>
+                            <th scope="col">Privilegios</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let privilegio of listPrivilegio">
+                            <ng-container>
+                            <td>{{ privilegio.Menu}}</td>
+                            <td>{{ privilegio.Privilegios}}</td>
+                            <td [routerLink]="['/editar-privilegios', privilegio._id]" >
+                              
+                              <i class="fas fa-edit text-primary"></i>
+                            </td>
+                            <td (click)="eliminarPrivilegio(privilegio._id)">
+                              <i   class="fas fa-trash text-danger"></i>
+                               <!--  (click)="eliminarRol(rol._id)"  Elimina el usuario // ruta [routerLink]="['/eliminar-rol', rol._id]"--> 
+                            </td>
+                          </ng-container>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+   
+  

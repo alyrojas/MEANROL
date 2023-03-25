@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo"> {{ titulo | uppercase }}</span>
+                    
+                    <form [formGroup]="privilegioForm" (ngSubmit)="guardarPrivilegio()">
+                        <div class="form-group">
+                          <label for="menu">Menú</label>
+                          <input type="text" id="menu" class="form-control" formControlName="Menu">
+                        </div>
+                      
+                        <div class="form-group">
+                          <label for="privilegios">Privilegios</label>
+                          <br>
+                          <div formArrayName="Privilegios">
+                            <div *ngFor="let privilegio of privilegios.controls; let i = index" class="row mb-3">
+                              <div class="col">
+                                <input type="text" class="form-control" [formControlName]="i" placeholder="Privilegio">
+                              </div>
+                              <div class="col-auto">
+                                <button type="button" class="btn btn-danger" (click)="eliminarPrivilegio(i)">Eliminar</button>
+                              </div>
+                            </div>
+                            <div class="text-center">
+                              <button  style="background-color: #004b8d;border: #004b8d;" type="button" class="btn btn-success" (click)="agregarPrivilegio()">Agregar Privilegio</button>
+                            </div>
+                          </div>
+                        </div>
+                      <br>
+                        <div class="mb-3">
+                          <button routerLink="/listar-privilegios" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                          <button  style="background-color: #8dc640;border: #8dc640;" id="aceptar" type="submit" [disabled]="privilegioForm.invalid" class="btn btn-success btn-lg float-end">ACEPTAR</button>
+                          <!-- [disabled]="rolForm.invalid" Invalida el boton de aceptar hasta que se seleccione un dato--> 
+                      </div>
+                      </form>
+
+                     
+                      
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
